@@ -1,0 +1,1189 @@
+{
+  "corpus": {
+    "sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+    "seed": 31415,
+    "provenance": "Original procedural fiction; generator in context_lab/data.py",
+    "documents": {
+      "train": 960,
+      "validation": 120,
+      "test": 120
+    },
+    "split_policy": "deduplicate exact text, seeded shuffle, 80/10/10 by document",
+    "tokenizer": "UTF-8 bytes plus BOS=256 and EOS=257"
+  },
+  "protocol": {
+    "steps": 600,
+    "batch_tokens": 1024,
+    "seeds": [
+      7,
+      19,
+      42
+    ],
+    "selection": "lowest full validation loss; test is measured after training",
+    "evaluation": "document-local nonoverlapping chunks; every target counted once",
+    "comparison": "equal training target budget, same width/depth/optimizer schedule"
+  },
+  "bigram": {
+    "alpha": 0.1,
+    "test": {
+      "loss_nats": 1.9024823304585525,
+      "perplexity": 6.702511657873319,
+      "bits_per_token": 2.744701823531432,
+      "tokens": 17460
+    }
+  },
+  "runs": [
+    {
+      "variant": "context-32",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": true
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 32,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 7,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 124288,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 0.931663375839573,
+        "perplexity": 2.5387285271582742,
+        "bits_per_token": 1.3441061321016226,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 0.9413722716655928,
+        "perplexity": 2.5634968197853314,
+        "bits_per_token": 1.3581131079623288,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 0.9413722716655928,
+          "perplexity": 2.5634968197853314,
+          "bits_per_token": 1.3581131079623288,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.8694554699245598,
+          "perplexity": 6.484764288516478,
+          "bits_per_token": 2.6970541356229094,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 2.3085621627335695,
+          "perplexity": 10.05994968062933,
+          "bits_per_token": 3.330551183759621,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614400,
+      "training_seconds": 6.210138039896265,
+      "training_tokens_per_second": 98934.99887649245,
+      "wall_seconds": 7.164811790920794,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.569276218740114,
+          "validation_perplexity": 262.24422307998617,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.260962963104248,
+          "validation_loss": 2.2866202652978878,
+          "validation_perplexity": 9.8416193468914,
+          "gradient_norm": 0.8069273829460144,
+          "trained_tokens": 102400
+        },
+        {
+          "step": 200,
+          "train_loss": 1.7947827577590942,
+          "validation_loss": 1.7713751386744587,
+          "validation_perplexity": 5.878932152347777,
+          "gradient_norm": 0.9809859395027161,
+          "trained_tokens": 204800
+        },
+        {
+          "step": 300,
+          "train_loss": 1.4834262132644653,
+          "validation_loss": 1.3766552051955125,
+          "validation_perplexity": 3.9616286073217046,
+          "gradient_norm": 1.2872531414031982,
+          "trained_tokens": 307200
+        },
+        {
+          "step": 400,
+          "train_loss": 1.223701000213623,
+          "validation_loss": 1.1244713703238232,
+          "validation_perplexity": 3.07858898518908,
+          "gradient_norm": 1.4415991306304932,
+          "trained_tokens": 409600
+        },
+        {
+          "step": 500,
+          "train_loss": 1.099982738494873,
+          "validation_loss": 0.9933332211880643,
+          "validation_perplexity": 2.7002199190358893,
+          "gradient_norm": 1.365638017654419,
+          "trained_tokens": 512000
+        },
+        {
+          "step": 600,
+          "train_loss": 0.986640453338623,
+          "validation_loss": 0.931663375839573,
+          "validation_perplexity": 2.5387285271582742,
+          "gradient_norm": 1.3405344486236572,
+          "trained_tokens": 614400
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "context-32",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": true
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 32,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 19,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 124288,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 0.9338075187280727,
+        "perplexity": 2.5441777637588947,
+        "bits_per_token": 1.3471994764138182,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 0.9361071749378043,
+        "perplexity": 2.5500352304504146,
+        "bits_per_token": 1.3505171790233477,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 0.9361071749378043,
+          "perplexity": 2.5500352304504146,
+          "bits_per_token": 1.3505171790233477,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.9007640231242842,
+          "perplexity": 6.691004572119798,
+          "bits_per_token": 2.74222283006156,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 2.373670230616409,
+          "perplexity": 10.73672631912333,
+          "bits_per_token": 3.424482270416055,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614400,
+      "training_seconds": 5.887550381245092,
+      "training_tokens_per_second": 104355.79489174027,
+      "wall_seconds": 6.599127124994993,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.557098759018052,
+          "validation_perplexity": 259.07012009572793,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.2206671237945557,
+          "validation_loss": 2.27803441227192,
+          "validation_perplexity": 9.757482360400488,
+          "gradient_norm": 0.829653799533844,
+          "trained_tokens": 102400
+        },
+        {
+          "step": 200,
+          "train_loss": 1.720329999923706,
+          "validation_loss": 1.7317573230111758,
+          "validation_perplexity": 5.650575074132877,
+          "gradient_norm": 0.9339240789413452,
+          "trained_tokens": 204800
+        },
+        {
+          "step": 300,
+          "train_loss": 1.4251405000686646,
+          "validation_loss": 1.340617566397488,
+          "validation_perplexity": 3.821402746724906,
+          "gradient_norm": 1.3081648349761963,
+          "trained_tokens": 307200
+        },
+        {
+          "step": 400,
+          "train_loss": 1.2214404344558716,
+          "validation_loss": 1.1009748817251215,
+          "validation_perplexity": 3.0070961585376765,
+          "gradient_norm": 1.4443429708480835,
+          "trained_tokens": 409600
+        },
+        {
+          "step": 500,
+          "train_loss": 1.038903832435608,
+          "validation_loss": 0.9920464841110187,
+          "validation_perplexity": 2.6967476803580923,
+          "gradient_norm": 1.3209494352340698,
+          "trained_tokens": 512000
+        },
+        {
+          "step": 600,
+          "train_loss": 1.087255597114563,
+          "validation_loss": 0.9338075187280727,
+          "validation_perplexity": 2.5441777637588947,
+          "gradient_norm": 1.256028413772583,
+          "trained_tokens": 614400
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "context-32",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": true
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 32,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 42,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 124288,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 0.9515643857816724,
+        "perplexity": 2.5897578724003076,
+        "bits_per_token": 1.3728172204537712,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 0.965651319226312,
+        "perplexity": 2.626497788000539,
+        "bits_per_token": 1.3931403694756856,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 0.965651319226312,
+          "perplexity": 2.626497788000539,
+          "bits_per_token": 1.3931403694756856,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.9304477547452212,
+          "perplexity": 6.892595743206659,
+          "bits_per_token": 2.7850474024661644,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 2.358280492129331,
+          "perplexity": 10.572755876254924,
+          "bits_per_token": 3.4022795710201703,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614400,
+      "training_seconds": 6.070927652996033,
+      "training_tokens_per_second": 101203.64384457629,
+      "wall_seconds": 6.787125082919374,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.562914085640493,
+          "validation_perplexity": 260.5810865858715,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.2557432651519775,
+          "validation_loss": 2.274989043369777,
+          "validation_perplexity": 9.727812427932328,
+          "gradient_norm": 1.0654540061950684,
+          "trained_tokens": 102400
+        },
+        {
+          "step": 200,
+          "train_loss": 1.7467765808105469,
+          "validation_loss": 1.6948596315674067,
+          "validation_perplexity": 5.445881481711701,
+          "gradient_norm": 1.2575550079345703,
+          "trained_tokens": 204800
+        },
+        {
+          "step": 300,
+          "train_loss": 1.418421983718872,
+          "validation_loss": 1.33688664284132,
+          "validation_perplexity": 3.807171948716774,
+          "gradient_norm": 1.177901268005371,
+          "trained_tokens": 307200
+        },
+        {
+          "step": 400,
+          "train_loss": 1.217153787612915,
+          "validation_loss": 1.1149175447229343,
+          "validation_perplexity": 3.049316736560066,
+          "gradient_norm": 1.4259825944900513,
+          "trained_tokens": 409600
+        },
+        {
+          "step": 500,
+          "train_loss": 1.1170566082000732,
+          "validation_loss": 1.0051447859077542,
+          "validation_perplexity": 2.732302843136136,
+          "gradient_norm": 1.299144983291626,
+          "trained_tokens": 512000
+        },
+        {
+          "step": 600,
+          "train_loss": 1.0415394306182861,
+          "validation_loss": 0.9515643857816724,
+          "validation_perplexity": 2.5897578724003076,
+          "gradient_norm": 1.2562981843948364,
+          "trained_tokens": 614400
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "context-128",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": true
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 128,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 7,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 124288,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 1.3987710081414095,
+        "perplexity": 4.050219220375815,
+        "bits_per_token": 2.0179999967848676,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 1.4141852275066222,
+        "perplexity": 4.113133832033852,
+        "bits_per_token": 2.0402380146222345,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 1.8797922315739548,
+          "perplexity": 6.552143392240984,
+          "bits_per_token": 2.7119669303933427,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.7457460104121922,
+          "perplexity": 5.730174651259811,
+          "bits_per_token": 2.5185791118733625,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 1.4141852275066222,
+          "perplexity": 4.113133832033852,
+          "bits_per_token": 2.0402380146222345,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614396,
+      "training_seconds": 7.851512923836708,
+      "training_tokens_per_second": 78251.92494235496,
+      "wall_seconds": 8.944922917056829,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.570977817253911,
+          "validation_perplexity": 262.6908373315421,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.2501471042633057,
+          "validation_loss": 2.2914232936470134,
+          "validation_perplexity": 9.889002624137078,
+          "gradient_norm": 0.8237194418907166,
+          "trained_tokens": 102400
+        },
+        {
+          "step": 200,
+          "train_loss": 1.8998850584030151,
+          "validation_loss": 1.9220314370335956,
+          "validation_perplexity": 6.834828900613847,
+          "gradient_norm": 0.9065259695053101,
+          "trained_tokens": 204799
+        },
+        {
+          "step": 300,
+          "train_loss": 1.690277338027954,
+          "validation_loss": 1.68656003682933,
+          "validation_perplexity": 5.400869919662013,
+          "gradient_norm": 1.527327537536621,
+          "trained_tokens": 307198
+        },
+        {
+          "step": 400,
+          "train_loss": 1.457223892211914,
+          "validation_loss": 1.548636127712605,
+          "validation_perplexity": 4.705048718999342,
+          "gradient_norm": 1.3711585998535156,
+          "trained_tokens": 409597
+        },
+        {
+          "step": 500,
+          "train_loss": 1.4328488111495972,
+          "validation_loss": 1.4619934956118437,
+          "validation_perplexity": 4.314552001452898,
+          "gradient_norm": 1.2000011205673218,
+          "trained_tokens": 511996
+        },
+        {
+          "step": 600,
+          "train_loss": 1.326288104057312,
+          "validation_loss": 1.3987710081414095,
+          "validation_perplexity": 4.050219220375815,
+          "gradient_norm": 1.240958571434021,
+          "trained_tokens": 614396
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "context-128",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": true
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 128,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 19,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 124288,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 1.443448082563032,
+        "perplexity": 4.235274244013091,
+        "bits_per_token": 2.0824553904943692,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 1.4468457129129975,
+        "perplexity": 4.249688613808632,
+        "bits_per_token": 2.0873571349510383,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 1.8600088357652313,
+          "perplexity": 6.423793530309908,
+          "bits_per_token": 2.683425523368154,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.795882528508242,
+          "perplexity": 6.024789424697344,
+          "bits_per_token": 2.5909108178979734,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 1.4468457129129975,
+          "perplexity": 4.249688613808632,
+          "bits_per_token": 2.0873571349510383,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614396,
+      "training_seconds": 7.898780247662216,
+      "training_tokens_per_second": 77783.65529055469,
+      "wall_seconds": 9.064245416084304,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.559948732574984,
+          "validation_perplexity": 259.80951621661893,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.254422664642334,
+          "validation_loss": 2.280129258749353,
+          "validation_perplexity": 9.777944212688514,
+          "gradient_norm": 0.7654624581336975,
+          "trained_tokens": 102400
+        },
+        {
+          "step": 200,
+          "train_loss": 1.8623323440551758,
+          "validation_loss": 1.917002227216275,
+          "validation_perplexity": 6.80054140378431,
+          "gradient_norm": 0.9067258834838867,
+          "trained_tokens": 204799
+        },
+        {
+          "step": 300,
+          "train_loss": 1.5468474626541138,
+          "validation_loss": 1.7096882574018124,
+          "validation_perplexity": 5.527238133441544,
+          "gradient_norm": 1.2438338994979858,
+          "trained_tokens": 307198
+        },
+        {
+          "step": 400,
+          "train_loss": 1.5248875617980957,
+          "validation_loss": 1.5804610453953565,
+          "validation_perplexity": 4.857194682329809,
+          "gradient_norm": 1.482408881187439,
+          "trained_tokens": 409598
+        },
+        {
+          "step": 500,
+          "train_loss": 1.3341201543807983,
+          "validation_loss": 1.4669897007395072,
+          "validation_perplexity": 4.336162328145463,
+          "gradient_norm": 1.2317407131195068,
+          "trained_tokens": 511998
+        },
+        {
+          "step": 600,
+          "train_loss": 1.3646290302276611,
+          "validation_loss": 1.443448082563032,
+          "validation_perplexity": 4.235274244013091,
+          "gradient_norm": 1.222753643989563,
+          "trained_tokens": 614396
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "context-128",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": true
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 128,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 42,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 124288,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 1.412811909411935,
+        "perplexity": 4.107489067832028,
+        "bits_per_token": 2.038256735417466,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 1.418930686435066,
+        "perplexity": 4.13269892565894,
+        "bits_per_token": 2.0470842646850422,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 1.8424670172447737,
+          "perplexity": 6.312091106179476,
+          "bits_per_token": 2.6581180287805153,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.7319109310399217,
+          "perplexity": 5.651443114498573,
+          "bits_per_token": 2.4986193114726825,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 1.418930686435066,
+          "perplexity": 4.13269892565894,
+          "bits_per_token": 2.0470842646850422,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614395,
+      "training_seconds": 8.400054123951122,
+      "training_tokens_per_second": 73141.79062824989,
+      "wall_seconds": 9.675897957989946,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.573805675351915,
+          "validation_perplexity": 263.43474107453727,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.2187345027923584,
+          "validation_loss": 2.2800494184322337,
+          "validation_perplexity": 9.777163569685605,
+          "gradient_norm": 0.6507622599601746,
+          "trained_tokens": 102398
+        },
+        {
+          "step": 200,
+          "train_loss": 1.8523263931274414,
+          "validation_loss": 1.9501522470317263,
+          "validation_perplexity": 7.029757758874036,
+          "gradient_norm": 1.4885327816009521,
+          "trained_tokens": 204798
+        },
+        {
+          "step": 300,
+          "train_loss": 1.6826893091201782,
+          "validation_loss": 1.6893851217189926,
+          "validation_perplexity": 5.416149408427234,
+          "gradient_norm": 1.2579277753829956,
+          "trained_tokens": 307197
+        },
+        {
+          "step": 400,
+          "train_loss": 1.4902762174606323,
+          "validation_loss": 1.5500060083840477,
+          "validation_perplexity": 4.711498490998071,
+          "gradient_norm": 1.3812305927276611,
+          "trained_tokens": 409596
+        },
+        {
+          "step": 500,
+          "train_loss": 1.433359980583191,
+          "validation_loss": 1.4452968787631384,
+          "validation_perplexity": 4.243111645588573,
+          "gradient_norm": 1.563081979751587,
+          "trained_tokens": 511996
+        },
+        {
+          "step": 600,
+          "train_loss": 1.3403602838516235,
+          "validation_loss": 1.412811909411935,
+          "validation_perplexity": 4.107489067832028,
+          "gradient_norm": 1.1821104288101196,
+          "trained_tokens": 614395
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "no-position-128",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": false
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 128,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 7,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 116096,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 1.6437523786404713,
+        "perplexity": 5.1745499989222195,
+        "bits_per_token": 2.3714334051140455,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 1.659500880640124,
+        "perplexity": 5.256686475575966,
+        "bits_per_token": 2.3941536908503744,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 1.8055918900008054,
+          "perplexity": 6.083571188045723,
+          "bits_per_token": 2.6049184655734927,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.7251013232533738,
+          "perplexity": 5.613089737394685,
+          "bits_per_token": 2.488795124088631,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 1.659500880640124,
+          "perplexity": 5.256686475575966,
+          "bits_per_token": 2.3941536908503744,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614396,
+      "training_seconds": 8.313844240736216,
+      "training_tokens_per_second": 73900.35009190807,
+      "wall_seconds": 9.50274166604504,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.565859218857839,
+          "validation_perplexity": 261.34966382542586,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.2662296295166016,
+          "validation_loss": 2.2890282947568585,
+          "validation_perplexity": 9.865346812955808,
+          "gradient_norm": 0.899846613407135,
+          "trained_tokens": 102400
+        },
+        {
+          "step": 200,
+          "train_loss": 1.9747111797332764,
+          "validation_loss": 1.978810876907855,
+          "validation_perplexity": 7.234135590866793,
+          "gradient_norm": 1.0393640995025635,
+          "trained_tokens": 204799
+        },
+        {
+          "step": 300,
+          "train_loss": 1.8380597829818726,
+          "validation_loss": 1.8375627405038606,
+          "validation_perplexity": 6.281210649627847,
+          "gradient_norm": 1.1998891830444336,
+          "trained_tokens": 307198
+        },
+        {
+          "step": 400,
+          "train_loss": 1.7011617422103882,
+          "validation_loss": 1.7358296355349903,
+          "validation_perplexity": 5.673632899243622,
+          "gradient_norm": 1.0923529863357544,
+          "trained_tokens": 409597
+        },
+        {
+          "step": 500,
+          "train_loss": 1.6563869714736938,
+          "validation_loss": 1.6853894199532158,
+          "validation_perplexity": 5.394551269269312,
+          "gradient_norm": 1.302104115486145,
+          "trained_tokens": 511996
+        },
+        {
+          "step": 600,
+          "train_loss": 1.6004894971847534,
+          "validation_loss": 1.6437523786404713,
+          "validation_perplexity": 5.1745499989222195,
+          "gradient_norm": 1.074912667274475,
+          "trained_tokens": 614396
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "no-position-128",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": false
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 128,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 19,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 116096,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 1.5632382842268109,
+        "perplexity": 4.774256639522699,
+        "bits_per_token": 2.255276120381792,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 1.5897656557622781,
+        "perplexity": 4.90259989766165,
+        "bits_per_token": 2.2935470277438297,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 1.8021300570388568,
+          "perplexity": 6.062547292384443,
+          "bits_per_token": 2.5999240963269035,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.6474737947339455,
+          "perplexity": 5.19384252806383,
+          "bits_per_token": 2.3768022736571854,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 1.5897656557622781,
+          "perplexity": 4.90259989766165,
+          "bits_per_token": 2.2935470277438297,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614396,
+      "training_seconds": 9.3961491426453,
+      "training_tokens_per_second": 65388.063841122574,
+      "wall_seconds": 10.93732887506485,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.550953539956217,
+          "validation_perplexity": 257.48295917588814,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.2715301513671875,
+          "validation_loss": 2.259331782882865,
+          "validation_perplexity": 9.57668772156394,
+          "gradient_norm": 0.8488608598709106,
+          "trained_tokens": 102400
+        },
+        {
+          "step": 200,
+          "train_loss": 1.8894543647766113,
+          "validation_loss": 1.9302441215284767,
+          "validation_perplexity": 6.891192324659916,
+          "gradient_norm": 0.6566926836967468,
+          "trained_tokens": 204799
+        },
+        {
+          "step": 300,
+          "train_loss": 1.6758307218551636,
+          "validation_loss": 1.7719789117655254,
+          "validation_perplexity": 5.882482765159945,
+          "gradient_norm": 0.8478591442108154,
+          "trained_tokens": 307198
+        },
+        {
+          "step": 400,
+          "train_loss": 1.6625094413757324,
+          "validation_loss": 1.6661386009931989,
+          "validation_perplexity": 5.291694950079097,
+          "gradient_norm": 1.0583010911941528,
+          "trained_tokens": 409598
+        },
+        {
+          "step": 500,
+          "train_loss": 1.4992340803146362,
+          "validation_loss": 1.5925419342801015,
+          "validation_perplexity": 4.9162297918756455,
+          "gradient_norm": 1.0360932350158691,
+          "trained_tokens": 511998
+        },
+        {
+          "step": 600,
+          "train_loss": 1.533026099205017,
+          "validation_loss": 1.5632382842268109,
+          "validation_perplexity": 4.774256639522699,
+          "gradient_norm": 1.1886603832244873,
+          "trained_tokens": 614396
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    },
+    {
+      "variant": "no-position-128",
+      "model_config": {
+        "vocab_size": 258,
+        "max_context": 128,
+        "width": 64,
+        "heads": 4,
+        "layers": 2,
+        "dropout": 0.1,
+        "position_embeddings": false
+      },
+      "train_config": {
+        "steps": 600,
+        "context_length": 128,
+        "batch_tokens": 1024,
+        "learning_rate": 0.001,
+        "weight_decay": 0.1,
+        "warmup_steps": 30,
+        "eval_every": 100,
+        "seed": 42,
+        "threads": 4,
+        "device": "cpu"
+      },
+      "parameters": 116096,
+      "best_step": 600,
+      "corpus_sha256": "a476f7deb6a3570ef9043362d1388a4a71ffa7483e16867426265ee652ec89ba",
+      "validation": {
+        "loss_nats": 1.611500857265396,
+        "perplexity": 5.010325370829828,
+        "bits_per_token": 2.3249042951651,
+        "tokens": 17387
+      },
+      "test": {
+        "loss_nats": 1.6164429759651524,
+        "perplexity": 5.035148281899371,
+        "bits_per_token": 2.3320342653047232,
+        "tokens": 17460
+      },
+      "test_context_sweep": {
+        "32": {
+          "loss_nats": 1.8289764858739619,
+          "perplexity": 6.227509451606999,
+          "bits_per_token": 2.6386553060728883,
+          "tokens": 17460
+        },
+        "64": {
+          "loss_nats": 1.6865314846322845,
+          "perplexity": 5.400715715161299,
+          "bits_per_token": 2.433150609182098,
+          "tokens": 17460
+        },
+        "128": {
+          "loss_nats": 1.6164429759651524,
+          "perplexity": 5.035148281899371,
+          "bits_per_token": 2.3320342653047232,
+          "tokens": 17460
+        }
+      },
+      "trained_tokens": 614395,
+      "training_seconds": 10.296944500878453,
+      "training_tokens_per_second": 59667.700447213705,
+      "wall_seconds": 11.717623666860163,
+      "history": [
+        {
+          "step": 0,
+          "train_loss": null,
+          "validation_loss": 5.568832996860082,
+          "validation_perplexity": 262.12801645696635,
+          "gradient_norm": null,
+          "trained_tokens": 0
+        },
+        {
+          "step": 100,
+          "train_loss": 2.226052761077881,
+          "validation_loss": 2.262563279699812,
+          "validation_perplexity": 9.607684813981699,
+          "gradient_norm": 0.5943347215652466,
+          "trained_tokens": 102398
+        },
+        {
+          "step": 200,
+          "train_loss": 1.901634931564331,
+          "validation_loss": 1.9639333092118034,
+          "validation_perplexity": 7.127305902337104,
+          "gradient_norm": 0.7166987061500549,
+          "trained_tokens": 204798
+        },
+        {
+          "step": 300,
+          "train_loss": 1.7723854780197144,
+          "validation_loss": 1.7895655319100656,
+          "validation_perplexity": 5.986850805620507,
+          "gradient_norm": 0.8858135342597961,
+          "trained_tokens": 307197
+        },
+        {
+          "step": 400,
+          "train_loss": 1.6906423568725586,
+          "validation_loss": 1.7131727901727942,
+          "validation_perplexity": 5.546531570635937,
+          "gradient_norm": 0.8971937298774719,
+          "trained_tokens": 409596
+        },
+        {
+          "step": 500,
+          "train_loss": 1.6593945026397705,
+          "validation_loss": 1.6451125214892053,
+          "validation_perplexity": 5.181592914698658,
+          "gradient_norm": 1.0620648860931396,
+          "trained_tokens": 511996
+        },
+        {
+          "step": 600,
+          "train_loss": 1.6159669160842896,
+          "validation_loss": 1.611500857265396,
+          "validation_perplexity": 5.010325370829828,
+          "gradient_norm": 1.2239142656326294,
+          "trained_tokens": 614395
+        }
+      ],
+      "environment": {
+        "python": "3.13.5",
+        "torch": "2.14.1",
+        "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+        "device": "cpu",
+        "threads": 4
+      }
+    }
+  ]
+}

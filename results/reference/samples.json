@@ -1,0 +1,24 @@
+{
+  "checkpoint": "checkpoints/context-128-seed-7.pt",
+  "sha256": "6926d1297e15fb1bc778063074072787cd19742e67bbcdb5586384020bb2900a",
+  "sampling": {
+    "seed": 7,
+    "temperature": 0.8,
+    "top_k": 40,
+    "max_new_tokens": 220
+  },
+  "examples": [
+    {
+      "prompt": "Mira found a",
+      "output": "Mira found a gold cup near the market. Outside, there was sunshine. Later, Sam returned to the garden. The key was stil stil goeeen.\n"
+    },
+    {
+      "prompt": "At the harbor,",
+      "output": "At the harbor, Nora gave Iris a black stone. They talked about the stars. Later, Iris returned to the cupe home from the station.\n"
+    },
+    {
+      "prompt": "The rain had stopped",
+      "output": "The rain had stopped when Leo reached the station. Ada carried a violet cup and walked home. Together they took the key home from the me harbor.\n"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "context-lab"
+version = "0.1.0"
+description = "A small transformer, built from first principles, with reproducible context-length experiments."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["torch>=2.6,<3"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1", "matplotlib>=3.9,<4"]
+demo = ["streamlit>=1.45,<2"]
+
+[project.scripts]
+context-lab = "context_lab.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["context_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
